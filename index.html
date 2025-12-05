@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedéx</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script type="module" src="./scripts/index.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="screen-reader-only">Pokedéx Interativa</h1>
+
+      <a href="#">
+        <img src="./assets/logo.png" alt="Logo da Pokedéx" />
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <ul>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Pokedéx</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="search-section">
+        <form class="search-form" role="search">
+          <label class="screen-reader-only" for="search-input">
+            Buscar Pokémon pelo nome
+          </label>
+
+          <div class="search-form__field">
+            <input
+              id="search-input"
+              type="search"
+              name="search-query"
+              class="search-form__input"
+              placeholder="Faça uma busca pelo nome do pokémon"
+              autocomplete="off"
+              data-search-input
+            />
+
+            <button
+              type="submit"
+              class="search-form__icon-button"
+              aria-label="Buscar Pokémon"
+            >
+              <span aria-hidden="true">🔍</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="results-section" aria-label="Resultados da Pokédex">
+        <div class="results-section__pokemon-list" data-pokemon-list>
+        </div>
+
+        <nav class="pagination" aria-label="Paginação dos resultados">
+          <button
+            type="button"
+            class="pagination__control-button pagination__control-button--previous"
+            data-page-previous
+            disabled
+          >
+            <span class="pagination__icon" aria-hidden="true">←</span>
+            <span class="pagination__control-text">Anterior</span>
+          </button>
+
+          <ul class="pagination__list" data-pagination-pages></ul>
+
+          <button
+            type="button"
+            class="pagination__control-button pagination__control-button--next"
+            data-page-next
+          >
+            <span class="pagination__control-text">Próximo</span>
+            <span class="pagination__icon" aria-hidden="true">→</span>
+          </button>
+        </nav>
+      </section>
+    </main>
+  </body>
+</html>
