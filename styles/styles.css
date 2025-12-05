@@ -32,6 +32,7 @@
 
 /* 🌞 TEMA CLARO (PADRÃO / FIGMA) */
 
+:root,
 :root[data-theme="light"] {
   --color-page-background: #ffffff;
 
@@ -414,4 +415,100 @@ main {
 .pagination__page-button:not(.pagination__page-button--current):hover {
   background-color: var(--color-pagination-hover-background);
   border-color: var(--color-pagination-hover-border);
+}
+
+.pagination__page-button--active {
+  background-color: var(--color-pagination-current-background);
+  color: var(--color-pagination-current-text);
+}
+
+/* POKEMON CARDS */
+
+.pokemon-card {
+  background-color: var(--color-card-background);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  min-height: 285px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.pokemon-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  background-color: var(--color-card-hover-background);
+}
+
+.pokemon-card__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pokemon-card__type {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.pokemon-card__number {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.pokemon-card__image-wrapper {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.pokemon-card__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.pokemon-card:hover .pokemon-card__image {
+  transform: scale(1.1);
+}
+
+.pokemon-card__name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin: 0;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* MENSAGENS DE FEEDBACK */
+
+.loading-message,
+.error-message,
+.no-results {
+  text-align: center;
+  padding: 48px 24px;
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+
+.error-message {
+  color: #dc2626;
 }
