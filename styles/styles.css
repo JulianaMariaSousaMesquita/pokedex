@@ -1,0 +1,417 @@
+:root {
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  --transition-fast: 0.2s ease-in-out;
+
+  --radius-pill: 999px;
+  --radius-search: 28px;
+  --radius-card: 24px;
+
+  --color-type-grass: #10b981;    /* Planta */
+  --color-type-fire: #ef4444;     /* Fogo */
+  --color-type-water: #3b82f6;    /* Água */
+  --color-type-bug: #84cc16;      /* Inseto */
+  --color-type-normal: #6b7280;   /* Normal */
+  --color-type-poison: #a855f7;   /* Veneno */
+  --color-type-electric: #eab308; /* Elétrico */
+  --color-type-ground: #d97706;   /* Terra */
+  --color-type-fairy: #ec4899;    /* Fada */
+  --color-type-fighting: #dc2626; /* Lutador */
+  --color-type-psychic: #ec4899;  /* Psíquico */
+  --color-type-rock: #78716c;     /* Pedra */
+  --color-type-ghost: #7c3aed;    /* Fantasma */
+  --color-type-ice: #06b6d4;      /* Gelo */
+  --color-type-dragon: #6366f1;   /* Dragão */
+  --color-type-steel: #64748b;    /* Aço */
+  --color-type-dark: #1f2937;     /* Sombrio */
+  --color-type-flying: #8b5cf6;   /* Voador */
+
+  --color-focus-ring: rgba(60, 130, 246, 0.3);
+}
+
+/* 🌞 TEMA CLARO (PADRÃO / FIGMA) */
+
+:root[data-theme="light"] {
+  --color-page-background: #ffffff;
+
+  --color-header-background: #ffffff;
+  --color-header-border: #d9d9d9;
+
+  --color-text-main: #111827;
+  --color-text-muted: #6b7280;
+
+  --color-nav-pill-background: #f3f4f6;
+  --color-nav-pill-text: #6b7280;
+  --color-nav-pill-hover-background: #e5e7eb;
+  --color-nav-pill-hover-border: #e5e7eb;
+  --color-nav-pill-hover-text: #111827;
+
+  --color-search-background: #f2f2f7;
+  --color-search-placeholder: #9ca3af;
+  --color-search-icon: #49454f;
+
+  --color-card-background: #f0f3ff;
+  --color-card-hover-background: #eef2ff;
+
+  --color-pagination-text: #1e1e1e;
+  --color-pagination-text-muted: #757575;
+  --color-pagination-current-background: #111827;
+  --color-pagination-current-text: #ffffff;
+  --color-pagination-hover-background: #f3f4f6;
+  --color-pagination-hover-border: #e5e7eb;
+}
+
+
+/* 🌙 TEMA ESCURO */
+:root[data-theme="dark"] {
+  --color-page-background: #020617;
+
+  --color-header-background: #020617;
+  --color-header-border: #111827;
+
+  --color-text-main: #f9fafb;
+  --color-text-muted: #9ca3af;
+
+  --color-nav-pill-background: #111827;
+  --color-nav-pill-text: #e5e7eb;
+  --color-nav-pill-hover-background: #1f2937;
+  --color-nav-pill-hover-border: #1f2937;
+  --color-nav-pill-hover-text: #ffffff;
+
+  --color-search-background: #111827;
+  --color-search-placeholder: #6b7280;
+  --color-search-icon: #9ca3af;
+
+  --color-card-background: #020617;
+  --color-card-hover-background: #111827;
+
+  --color-pagination-text: #e5e7eb;
+  --color-pagination-text-muted: #9ca3af;
+  --color-pagination-current-background: #f9fafb;
+  --color-pagination-current-text: #020617;
+  --color-pagination-hover-background: #111827;
+  --color-pagination-hover-border: #1f2937;
+}
+
+/* BASE */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-page-background);
+  font-family: var(--font-family-base);
+  color: var(--color-text-main);
+}
+
+main {
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 0 32px 32px;
+}
+
+/* Apenas para leitor de tela */
+
+.screen-reader-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* HEADER */
+
+.header {
+  background-color: var(--color-header-background);
+  border-bottom: 1px solid var(--color-header-border);
+
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.header > a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.header > a img {
+  width: 124px;
+  height: 39px;
+  object-fit: contain;
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.header nav li {
+  margin: 0;
+}
+
+.header nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 32px;
+  padding: 8px;
+  border-radius: 8px;
+
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+
+  color: var(--color-nav-pill-text);
+  background-color: var(--color-nav-pill-background);
+  border: 1px solid transparent;
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.header nav a:hover {
+  background-color: var(--color-nav-pill-hover-background);
+  border-color: var(--color-nav-pill-hover-border);
+  color: var(--color-nav-pill-hover-text);
+}
+
+/* SEARCH BAR */
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 0;
+}
+
+.search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* wrapper do input + ícone (pra posicionar a lupa dentro) */
+.search-form__field {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  height: 56px;
+}
+
+.search-form__input {
+  width: 100%;
+  height: 100%;
+  padding: 0 48px 0 24px;
+  border-radius: var(--radius-search);
+  border: none;
+
+  background-color: var(--color-search-background);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--color-text-main);
+
+  outline: none;
+}
+
+.search-form__input::placeholder {
+  color: var(--color-search-placeholder);
+}
+
+.search-form__input:focus {
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+  background-color: var(--color-header-background);
+}
+
+/* botão da lupa */
+
+.search-form__icon-button {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+  color: var(--color-search-icon);
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.search-form__icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  transform: translateY(-50%) scale(1.02);
+}
+
+.search-form__icon-button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* RESULTADOS / GRID */
+
+.results-section {
+  margin-top: 16px;
+}
+
+.results-section__pokemon-list {
+  display: grid;
+  gap: 24px;
+  padding-bottom: 32px;
+}
+
+/* Responsivo:
+   - até ~480px: 1 por linha
+   - a partir de 480px: 2 colunas
+   - a partir de 768px: 4 colunas
+   - a partir de ~1200px: 6 colunas
+*/
+@media (min-width: 480px) {
+  .results-section__pokemon-list {
+    grid-template-columns: repeat(2, minmax(203px, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .results-section__pokemon-list {
+    grid-template-columns: repeat(4, minmax(203px, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .results-section__pokemon-list {
+    grid-template-columns: repeat(6, minmax(203px, 1fr));
+  }
+}
+
+/* PAGINAÇÃO */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0 32px;
+}
+
+.pagination__control-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  min-width: 109px;
+  height: 32px;
+
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: transparent;
+
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--color-pagination-text);
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.pagination__control-button--previous {
+  color: var(--color-pagination-text-muted);
+}
+
+.pagination__control-button[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.pagination__control-button:not([disabled]):hover {
+  background-color: var(--color-pagination-hover-background);
+  border-color: var(--color-pagination-hover-border);
+}
+
+.pagination__icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination__page-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 12px;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 8px;
+
+  border: 1px solid transparent;
+  background-color: transparent;
+
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--color-pagination-text);
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.pagination__page-button--current {
+  background-color: var(--color-pagination-current-background);
+  color: var(--color-pagination-current-text);
+}
+
+.pagination__page-button:not(.pagination__page-button--current):hover {
+  background-color: var(--color-pagination-hover-background);
+  border-color: var(--color-pagination-hover-border);
+}
